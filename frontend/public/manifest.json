@@ -1,0 +1,79 @@
+{
+  "name": "HNDY - Your Trusted Handyman Service",
+  "short_name": "HNDY",
+  "description": "Professional handyman services - take a photo, get a quote, book service",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#a3e635",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "New Service Request",
+      "short_name": "New Request",
+      "description": "Submit a new handyman service request",
+      "url": "/?action=new-request",
+      "icons": [
+        {
+          "src": "/logo192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Track Requests",
+      "short_name": "Track",
+      "description": "View your service request status",
+      "url": "/?action=customer-portal",
+      "icons": [
+        {
+          "src": "/logo192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Admin Panel",
+      "short_name": "Admin",
+      "description": "Manage service requests (admin only)",
+      "url": "/?action=admin-panel",
+      "icons": [
+        {
+          "src": "/logo192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "screenshots": [
+    {
+      "src": "/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "gcm_sender_id": "103953800507"
+}

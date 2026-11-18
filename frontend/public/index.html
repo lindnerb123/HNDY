@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Enhanced PWA Meta Tags -->
+    <meta name="theme-color" content="#16a34a" />
+    <meta name="background-color" content="#a3e635" />
+    <meta name="description" content="HNDY - Professional handyman services. Take a photo, get a quote, book service. Your trusted local handyman platform." />
+    
+    <!-- iOS PWA Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="HNDY" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    
+    <!-- Enhanced Mobile Support -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="HNDY" />
+    
+    <!-- Windows/Microsoft Support -->
+    <meta name="msapplication-TileColor" content="#a3e635" />
+    <meta name="msapplication-TileImage" content="%PUBLIC_URL%/logo192.png" />
+    <meta name="msapplication-config" content="%PUBLIC_URL%/browserconfig.xml" />
+    
+    <!-- Additional PWA Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon.ico" />
+    
+    <!-- Preconnect for Performance (FIXED URLs) -->
+    <link rel="preconnect" href="https://hndy-app-production.up.railway.app" />
+    <link rel="dns-prefetch" href="https://hndy-app-production.up.railway.app" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- SEO and Social Media -->
+    <meta property="og:title" content="HNDY - Your Trusted Handyman Service" />
+    <meta property="og:description" content="Professional handyman services - take a photo, get a quote, book service" />
+    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
+    <meta property="og:url" content="https://hndy-app.vercel.app" />
+    <meta property="og:type" content="website" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HNDY - Your Trusted Handyman Service" />
+    <meta name="twitter:description" content="Professional handyman services - take a photo, get a quote, book service" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/logo512.png" />
+    
+    <title>HNDY - Your Trusted Handyman Service</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- Enhanced Service Worker Registration -->
+    <script>
+      // Register service worker with enhanced error handling
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('%PUBLIC_URL%/service-worker.js')
+            .then(registration => {
+              console.log('✅ HNDY Service Worker registered successfully:', registration.scope);
+              
+              // Check for updates
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                console.log('🔄 New service worker found, installing...');
+                
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed') {
+                    if (navigator.serviceWorker.controller) {
+                      console.log('🆕 New content available, will update on next visit');
+                    } else {
+                      console.log('✅ Content cached for offline use');
+                    }
+                  }
+                });
+              });
+            })
+            .catch(error => {
+              console.error('❌ Service Worker registration failed:', error);
+            });
+        });
+        
+        // Listen for service worker messages
+        navigator.serviceWorker.addEventListener('message', event => {
+          console.log('📨 Message from service worker:', event.data);
+        });
+      } else {
+        console.log('❌ Service Workers not supported in this browser');
+      }
+      
+      // PWA Install Analytics (optional)
+      window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('📱 PWA install prompt available');
+      });
+      
+      window.addEventListener('appinstalled', (e) => {
+        console.log('🎉 HNDY PWA installed successfully!');
+      });
+    </script>
+  </body>
+</html>
